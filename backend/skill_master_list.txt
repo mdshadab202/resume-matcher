@@ -1,0 +1,24 @@
+Python
+JavaScript
+React
+Node.js
+SQL
+NoSQL
+MongoDB
+Machine Learning
+Deep Learning
+TensorFlow
+PyTorch
+Natural Language Processing
+Prompt Engineering
+Large Language Models
+Hugging Face
+AWS
+Azure
+Docker
+Kubernetes
+CI/CD
+Agile
+Scrum
+React
+R

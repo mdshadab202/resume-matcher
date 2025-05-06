@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Matcher</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+        }
+        .container {
+            max-width: 700px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4 text-primary">🚀 Resume Matcher Tool</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="jd_text" class="form-label">📄 Paste Job Description</label>
+                <textarea class="form-control" id="jd_text" name="jd_text" rows="6" placeholder="Enter job description here..." required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="resumes" class="form-label">📎 Upload Resume PDFs</label>
+                <input class="form-control" type="file" id="resumes" name="resumes" accept=".pdf" multiple required>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">🔍 Match Resumes</button>
+        </form>
+        <hr>
+        <div class="text-center mt-3">
+            <a href="/match_results" class="btn btn-outline-success">📊 View Matching Results</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = new FormData();
+            form.append('jd_text', document.getElementById('jd_text').value);
+            const files = document.getElementById('resumes').files;
+            for (let i = 0; i < files.length; i++) {
+                form.append('resumes', files[i]);
+            }
+
+            const response = await fetch('/match/', {
+                method: 'POST',
+                body: form
+            });
+
+            if (response.ok) {
+                window.location.href = "/match_results";
+            } else {
+                alert('❌ Matching failed. Please check your input.');
+            }
+        });
+    </script>
+</body>
+</html>
