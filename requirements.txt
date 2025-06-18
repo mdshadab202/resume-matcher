@@ -6,6 +6,10 @@ PyMuPDF
 openpyxl
 rapidfuzz
 starlette
-numpy==1.24.4
-spacy==3.7.2
-thinc==8.2.1
+numpy
+spacy
+thinc
+
+
+#python -m spacy download en_core_web_sm
+# uvicorn backend.app:app --reload

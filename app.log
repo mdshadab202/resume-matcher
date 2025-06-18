@@ -1,0 +1,6 @@
+2025-06-18 13:47:33,928 - INFO - Accessed home page (/)
+2025-06-18 13:47:56,194 - INFO - Received match request with JD text and resume file
+2025-06-18 13:47:56,963 - INFO - Results saved to results.xlsx
+2025-06-18 13:47:56,971 - INFO - Displaying match results
+2025-06-18 13:48:12,204 - INFO - Attempting to send email to: john@example.com
+2025-06-18 13:48:16,504 - ERROR - Error sending email to john@example.com: (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-7489008317csm10723158b3a.95 - gsmtp')

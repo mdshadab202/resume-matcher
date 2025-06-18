@@ -1,38 +1,138 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Resume Matching Results</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Resume Match Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #333;
+        }
+        table {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .priority-high {
+            background-color: #d4edda;
+        }
+        .priority-medium {
+            background-color: #fff3cd;
+        }
+        .priority-low {
+            background-color: #f8d7da;
+        }
+    </style>
 </head>
-<body class="container my-5">
-    <h2 class="mb-4 text-center">Resume Matching Results</h2>
+<body>
+    <h1 class="text-center">Resume Match Results</h1>
 
-    {% for label, data, color in [("High Priority (90%+)", high, "success"), ("Medium Priority (75-90%)", medium, "warning"), ("Low Priority (<75%)", low, "danger")] %}
-    {% if not data.empty %}
-        <h4 class="mt-4 text-{{ color }}">{{ label }}</h4>
-        <table class="table table-bordered">
-            <thead class="table-{{ color }}">
-                <tr>
-                    {% for col in data.columns %}
-                        <th>{{ col }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for _, row in data.iterrows() %}
-                    <tr>
-                        {% for col in data.columns %}
-                            <td>{{ row[col] }}</td>
-                        {% endfor %}
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
-    {% endfor %}
+    <h2>High Priority Matches</h2>
+    <table class="table table-bordered table-striped priority-high">
+        <thead>
+            <tr>
+                <th>Resume</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Skill Score</th>
+                <th>Matched Skills</th>
+                <th>Education Score</th>
+                <th>Matched Education</th>
+                <th>Experience Score</th>
+                <th>Final Score</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in high.itertuples() %}
+            <tr>
+                <td>{{ row.Resume }}</td>
+                <td>{{ row.Email }}</td>
+                <td>{{ row.Phone }}</td>
+                <td>{{ row._4 }}</td>
+                <td>{{ row._5 }}</td>
+                <td>{{ row._6 }}</td>
+                <td>{{ row._7 }}</td>
+                <td>{{ row._8 }}</td>
+                <td>{{ row._9 }}</td>
+                <td>{{ row.Priority }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-    <div class="mt-4 text-center">
-        <a class="btn btn-primary" href="/matching_results/matching_results.xlsx" download>Download Excel</a>
-    </div>
+    <h2>Medium Priority Matches</h2>
+    <table class="table table-bordered table-striped priority-medium">
+        <thead>
+            <tr>
+                <th>Resume</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Skill Score</th>
+                <th>Matched Skills</th>
+                <th>Education Score</th>
+                <th>Matched Education</th>
+                <th>Experience Score</th>
+                <th>Final Score</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in medium.itertuples() %}
+            <tr>
+                <td>{{ row.Resume }}</td>
+                <td>{{ row.Email }}</td>
+                <td>{{ row.Phone }}</td>
+                <td>{{ row._4 }}</td>
+                <td>{{ row._5 }}</td>
+                <td>{{ row._6 }}</td>
+                <td>{{ row._7 }}</td>
+                <td>{{ row._8 }}</td>
+                <td>{{ row._9 }}</td>
+                <td>{{ row.Priority }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Low Priority Matches</h2>
+    <table class="table table-bordered table-striped priority-low">
+        <thead>
+            <tr>
+                <th>Resume</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Skill Score</th>
+                <th>Matched Skills</th>
+                <th>Education Score</th>
+                <th>Matched Education</th>
+                <th>Experience Score</th>
+                <th>Final Score</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in low.itertuples() %}
+            <tr>
+                <td>{{ row.Resume }}</td>
+                <td>{{ row.Email }}</td>
+                <td>{{ row.Phone }}</td>
+                <td>{{ row._4 }}</td>
+                <td>{{ row._5 }}</td>
+                <td>{{ row._6 }}</td>
+                <td>{{ row._7 }}</td>
+                <td>{{ row._8 }}</td>
+                <td>{{ row._9 }}</td>
+                <td>{{ row.Priority }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

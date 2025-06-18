@@ -1,2 +1,1 @@
-Desired Skills and Experience
-Deep Learning, Artificial intelligence, LLMOps, LLM evaluation, Python, Data Structures, Machine Learning, Data Science
+python
